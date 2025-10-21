@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/php/php.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/ruby/ruby.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/go/go.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/rust/rust.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/kotlin/kotlin.min.js"></script>
+</head>
+<body>
+<div class="contest-container">
+    
+    <div class="contest-card">
+        
+    <h2><%= contest.title %></h2>
+
+<p><strong>Description:</strong></p>
+<% contest.description.split('.').forEach(line => { %>
+    <p><%= line.replace(/\<br\/>/g,"") %></p>
+<% }) %>
+
+<h3>Input Format</h3>
+<% contest.inputFormat.slice(0,2).forEach((testInput, idx) => { %>
+    <p><strong>Test case <%= idx + 1 %>:</strong></p>
+    <% testInput.split('\n').forEach(line => { %>
+        <p><%= line %></p>
+    <% }) %>
+<% }) %>
+
+<h3>Output Format</h3>
+<% contest.outputFormat.slice(0,2).forEach((testOutput, idx) => { %>
+    <p><strong>Test case <%= idx + 1 %>:</strong></p>
+    <% testOutput.split('\n').forEach(line => { %>
+        <p><%= line %></p>
+    <% }) %>
+<% }) %>
+
+</div>
+    <div class="submit-card">
+        <form action="/api/submission/<%= contest.id %>" method="post" enctype="multipart/form-data">
+        <label for="language" style="margin: 5;">Choose Language:</label>
+        <select name="language" id="language">
+        <option value="javascript">Node.js</option>
+    <option value="python">Python</option>
+    <option value="java">Java</option>
+    <option value="csharp">C#</option>
+    <option value="php">PHP</option>
+    <option value="ruby">Ruby</option>
+    <option value="go">Go</option>
+    <option value="c">C</option>
+    <option value="cpp">C++</option>
+    <option value="Kotlin">Kotlin</option>
+    <option value="rust">Rust</option>
+        </select>
+
+        <h3>Submit Your Solution</h3>
+        
+            <textarea name="code" id="code" class="code"></textarea>
+            <label for="codeFile">Upload Solution File or Write Your code here:</label>
+            <input type="file" id="codeFile" name="codeFile" accept=".js,.py,.java,.cs,.php,.rb,.go,.c,.cpp,.kt,.rs">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+<script>
+    const languageModes = {
+        'Node': 'javascript',
+        'python': 'python',
+        'java': 'text/x-java',
+        'c#': 'text/x-csharp',
+        'PHP': 'application/x-httpd-php',
+        'Ruby': 'text/x-ruby',
+        'Go': 'text/x-go',
+        'c': 'text/x-csrc',
+        'cpp': 'text/x-c++src',
+        'Kotlin': 'text/x-kotlin',
+        'Rust': 'text/x-rustsrc'
+    };
+    const codeTextarea = CodeMirror.fromTextArea(document.getElementById('code'), {
+        lineNumbers: true,
+        mode: 'javascript',
+        theme: 'default',
+        indentSize: 4,
+        tabSize: 4,
+    });
+    const languageSelect=document.getElementById('language')
+    languageSelect.addEventListener('change',function(){
+        const selectedLanguage=this.value;
+        const mode=languageModes[selectedLanguage]||'javascript';
+        codeTextarea.setOption('mode',mode);
+    });
+</script>
+</html>

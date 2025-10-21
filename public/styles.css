@@ -1,0 +1,225 @@
+/* ===== Codeforces-Inspired Theme - IMPROVISED ===== */
+
+/* Codeforces generally uses a very readable sans-serif font like Tahoma or Arial */
+body {
+  font-family: 'Tahoma', 'Segoe UI', Arial, sans-serif;
+  /* Light gray-blue background */
+  background-color: #f5f5f5;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  font-size: 14px; /* Slightly smaller base font size */
+}
+
+/* --- Navigation Bar --- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Codeforces signature dark blue for the main nav bar */
+  background: #1f3964;
+  color: white;
+  padding: 8px 30px; /* Slightly adjusted padding */
+  border-bottom: 3px solid #142a4d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the nav links (needs a selector) */
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: 500;
+  padding: 5px 0; /* for hover effect */
+  transition: all 0.2s ease;
+  font-size: 15px;
+}
+/* Codeforces links often don't have underlines, but we'll add a subtle hover */
+nav a:hover {
+  color: #c9c9c9;
+  /* No underline for links by default */
+}
+
+/* Remove the duplicate/overriding nav styles */
+/* The duplicate selector 'nav' that sets text-decoration: underline; has been removed */
+
+/* Navigation list and list items (assuming you use an unordered list) */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 40px;
+}
+
+nav ul li{
+    gap: 40px;
+}
+/* --- Main Container Layout --- */
+.container {
+  max-width: 65vw; /* Slightly wider container */
+  margin: 30px auto;
+  background: #fff;
+  /* Less aggressive border and box-shadow */
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+}
+.contest-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* Center the items if they don't fill the space */
+  justify-content: space-around;
+  gap: 20px;
+}
+
+/* --- Contest and Submission Cards --- */
+.contest-card,
+.submit-card {
+  /* White background for a cleaner look */
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px; /* Slightly tighter border-radius */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+  padding: 15px; /* Less padding to be denser */
+  width: calc(50% - 10px); /* Use calc for responsive width with a gap */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.contest-card h2,
+.contest-card h3 {
+  /* Codeforces uses a distinct color for primary text/headings, often a slightly lighter blue */
+  color: #3b5998;
+  margin: 8px 0;
+  font-weight: 600;
+}
+
+/* Adding a Codeforces-like rating/status indicator style */
+.rating-status {
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 3px;
+  display: inline-block;
+  font-size: 12px;
+}
+
+/* Example of a 'Newbie' (gray) rating style */
+.rating-newbie {
+  color: #808080;
+  background-color: #f0f0f0;
+}
+/* Example of a 'Pupil' (green) rating style */
+.rating-pupil {
+  color: #4CAF50;
+}
+
+/* --- Form Elements --- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+form label {
+  font-weight: 500;
+  color: #333;
+}
+form input,
+form textarea,
+select {
+  padding: 8px 10px; /* Reduced padding */
+  font-size: 14px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  transition: border-color 0.2s ease;
+}
+form input:focus,
+form textarea:focus,
+select:focus {
+  border-color: #3b5998; /* Blue focus outline */
+  outline: none;
+}
+form textarea {
+  resize: vertical;
+  height: 200px; /* Reduced height for a more compact form */
+  font-family: monospace;
+}
+button {
+  padding: 10px 15px;
+  background-color: #2e8b57; /* A more distinct 'Submit' green color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+button:hover {
+  background-color: #256c45; /* Darker green on hover */
+}
+
+/* --- Code Editor Styling (assuming CodeMirror or similar) --- */
+.CodeMirror {
+  height: 50vh !important; /* Slightly reduced height */
+  font-size: 15px !important;
+  font-family: 'Consolas', 'Fira Code', monospace !important;
+  border: 1px solid #dcdcdc !important;
+  border-radius: 4px !important;
+  /* Lighter background for the editor area */
+  background-color: #ffffff !important;
+  color: #222 !important;
+}
+
+/* --- Error Messages & Other Elements --- */
+.error {
+  color: #d9534f;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 12px; /* Smaller font size */
+  color: #888;
+  padding: 15px 0;
+  margin-top: 25px;
+  border-top: 1px solid #eee; /* Subtle separator */
+}
+
+/* Preformatted code (for displaying code snippets outside of the editor) */
+pre {
+  /* Using a dark theme for code snippets is good, but let's lighten the background slightly to fit the overall UI better */
+  background-color: #2c2c2c;
+  color: #dcdcdc;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 13px;
+  font-family: 'Consolas', monospace;
+}
+img{
+  max-width: 148px; /* Important for images in contest statements */
+  height: auto;
+}
+
+/* --- Responsive layout --- */
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 95%;
+    margin: 20px auto;
+  }
+  nav {
+    padding: 10px 15px;
+  }
+  .contest-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contest-card,
+  .submit-card {
+    width: 100%;
+  }
+}
