@@ -28,13 +28,13 @@ app.use("/api/contest",contestRouter)
 app.use("/api/submission",submissionRouter)
 
 app.get("/signup",(req,res)=>{
-    res.render("signup",{error:null});
+    res.render("SignUp",{error:null});
 })
 app.get('/', (req, res) => {
-  res.render('signin', { title: 'Sign In',error:null });
+  res.render('SignIn', { title: 'Sign In',error:null });
 });
 app.get('/signin', (req, res) => {
-  res.render('signin', { title: 'Sign In',error:null });
+  res.render('SignUp', { title: 'Sign In',error:null });
 });
 
 app.listen(process.env.PORT,()=>{
