@@ -1,4 +1,4 @@
-import express from 'express';
+iimport express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import userRouter from './routes/user.routes.js';
@@ -28,13 +28,13 @@ app.use("/api/contest",contestRouter)
 app.use("/api/submission",submissionRouter)
 
 app.get("/signup",(req,res)=>{
-    res.render("SignUp",{error:null});
+    res.render("Signup",{error:null});
 })
 app.get('/', (req, res) => {
-  res.render('SignIn', { title: 'Sign In',error:null });
+  res.render('Signin', { title: 'Sign In',error:null });
 });
 app.get('/signin', (req, res) => {
-  res.render('SignUp', { title: 'Sign In',error:null });
+  res.render('Signup', { title: 'Sign In',error:null });
 });
 
 app.listen(process.env.PORT,()=>{
