@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
   res.render('Signin', { title: 'Sign In',error:null });
 });
 app.get('/signin', (req, res) => {
-  res.render('Signup', { title: 'Sign In',error:null });
+  res.render('Signin', { title: 'Sign In',error:null });
 });
 
 app.listen(process.env.PORT,()=>{
